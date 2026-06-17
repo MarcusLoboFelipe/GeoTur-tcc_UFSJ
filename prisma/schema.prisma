@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senha     String
+  createdAt DateTime @default(now())
+
+  resetToken   String?
+  resetExpires DateTime?
+
+  emailVerificado Boolean @default(false)
+  tokenVerificacao String?
+
+  pontos      Ponto[]
+  comentarios Comentario[]
+  fotos       Foto[]
+
+  seguindo   Seguidor[] @relation("Seguindo")
+  seguidores Seguidor[] @relation("Seguidores")
+}
+
+model Ponto {
+  id           Int      @id @default(autoincrement())
+  nome         String
+  descricao    String
+  endereco     String
+  latitude     Float
+  longitude    Float
+  dataCadastro DateTime @default(now())
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  comentarios Comentario[]
+  fotos       Foto[]
+}
+
+model Comentario {
+  id        Int      @id @default(autoincrement())
+  texto     String
+  createdAt DateTime @default(now())
+
+  pontoId Int
+  ponto   Ponto @relation(fields: [pontoId], references: [id], onDelete: Cascade)
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+model Foto {
+  id   Int      @id @default(autoincrement())
+  url  String
+  data DateTime @default(now())
+
+  pontoId Int
+  ponto   Ponto @relation(fields: [pontoId], references: [id], onDelete: Cascade)
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+model Seguidor {
+  id Int @id @default(autoincrement())
+
+  seguidorId Int
+  seguindoId Int
+
+  seguidor Usuario @relation("Seguindo", fields: [seguidorId], references: [id], onDelete: Cascade)
+  seguindo Usuario @relation("Seguidores", fields: [seguindoId], references: [id], onDelete: Cascade)
+
+  @@unique([seguidorId, seguindoId])
+}
