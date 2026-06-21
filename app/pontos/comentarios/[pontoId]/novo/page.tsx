@@ -24,7 +24,7 @@ export default function NovoComentario() {
     }
 
     if(!pontoId || isNaN(pontoId)){
-      setErro("Ponto inválido.");
+      setErro("Local inválido.");
       return;
     }
 
