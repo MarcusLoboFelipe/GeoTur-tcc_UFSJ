@@ -29,10 +29,10 @@ const email = body.email;
       },
     });
 const link = `http://localhost:3000/resetar-senha?token=${token}`;
-    // 📧 envia email
+    
 await enviarEmail(
   email,
-  "Recuperação de senha - GeoTur",
+  "Recuperação de senha - Minhas Memórias",
   `
   <div style="background:#f3f4f6; padding:40px 0; font-family:Arial, sans-serif;">
 
@@ -41,7 +41,7 @@ await enviarEmail(
       <h2 style="margin-bottom:20px;">Recuperação de senha</h2>
 
       <p style="margin-bottom:20px;">
-        Você solicitou a redefinição da sua senha no <strong>GeoTur</strong>.
+        Você solicitou a redefinição da sua senha no <strong>Minhas Memórias</strong>.
       </p>
 
       <div style="text-align:center; margin:25px 0;">
