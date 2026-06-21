@@ -119,7 +119,7 @@ async function carregarUsuarios() {
       <div className="bg-black text-white flex justify-between items-center px-4 py-2">
         <div className="flex items-center gap-3">
           <button onClick={() => setMenuAberto(!menuAberto)}>☰</button>
-          <span>GeoTur</span>
+          <span>Minhas Memórias</span>
         </div>
 
         <div className="flex items-center gap-3 text-sm">
@@ -147,7 +147,7 @@ async function carregarUsuarios() {
               </div>
 
               <div onClick={() => router.push("/pontos")} className="cursor-pointer hover:text-blue-600">
-                📍 Pontos de Interesse
+                📍 Locais de Recordação
               </div>
 
               <div onClick={() => router.push("/pontos/meu-cadastro")} className="cursor-pointer hover:text-blue-600">
