@@ -50,7 +50,7 @@ export default function PontosLayout({
           </button>
 
           <span className="font-semibold text-base">
-            GeoTur
+            Minhas Memórias
           </span>
 
         </div>
@@ -113,7 +113,7 @@ export default function PontosLayout({
                 }}
                 className="cursor-pointer hover:text-blue-600"
               >
-                📍 Pontos de Interesse
+                📍 Locais de Recordação
               </div>
 
               <div
